@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+@theme {
+  --color-paper: #e7edda;
+  --color-paper-deep: #d6e0c5;
+  --color-card: #f7f9ef;
+  --color-ink: #1e2b37;
+  --color-ink-soft: #4a5966;
+  --color-hwy: #f3b32a;
+  --color-sign: #175089;
+  --color-sign-deep: #0f3a68;
+  --color-route: #cc4437;
+  --color-park: #5e9a5b;
+
+  --font-display: var(--font-overpass), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-public-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    color-scheme: light;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-paper);
+    /* faint atlas grid */
+    background-image:
+      linear-gradient(rgba(30, 43, 55, 0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(30, 43, 55, 0.045) 1px, transparent 1px);
+    background-size: 32px 32px;
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-sign);
+    outline-offset: 2px;
+  }
+}
+
+/* The yellow dashed line down the middle of a road, used as the page divider */
+.centerline {
+  height: 5px;
+  background-image: repeating-linear-gradient(
+    90deg,
+    var(--color-hwy) 0 30px,
+    transparent 30px 52px
+  );
+}
+
+/* A strip of asphalt with a dashed yellow line down its middle */
+.road {
+  width: 38px;
+  border-radius: 19px;
+  background-color: var(--color-ink);
+  background-image: repeating-linear-gradient(
+    180deg,
+    var(--color-hwy) 0 16px,
+    transparent 16px 32px
+  );
+  background-size: 3px 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
