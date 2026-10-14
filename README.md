@@ -35,8 +35,6 @@ npm start
 - `components/ui.tsx`: inputs, the highway-sign result panel and small charts
 - `app/globals.css`: colours and fonts (Tailwind `@theme` tokens)
 
-Set `NEXT_PUBLIC_SITE_URL` (for example `https://yoursite.com`) before deploying so canonical links and the sitemap use your real domain.
-
 ## Adding an eleventh calculator
 
 1. Add the maths to `lib/calc.ts`.
