@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Shield } from "@/components/glyphs";
-import { calculators } from "@/components/calculators/registry";
+import { toolComponents } from "@/components/calculators/registry";
 import { getTool, tools } from "@/lib/tools";
 
 type Params = { params: Promise<{ slug: string }> };
@@ -24,13 +24,13 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   };
 }
 
-export default async function CalculatorPage({ params }: Params) {
+export default async function ToolPage({ params }: Params) {
   const { slug } = await params;
   const tool = getTool(slug);
-  const Calculator = calculators[slug];
-  if (!tool || !Calculator) notFound();
+  const Tool = toolComponents[slug];
+  if (!tool || !Tool) notFound();
 
-  // the three calculators that follow this one in the list
+  // the three tools that follow this one in the list
   const index = tools.findIndex((t) => t.slug === slug);
   const more = [1, 2, 3].map((n) => tools[(index + n) % tools.length]);
 
@@ -53,12 +53,14 @@ export default async function CalculatorPage({ params }: Params) {
       <p className="mt-4 max-w-2xl text-lg leading-relaxed text-ink-soft">{tool.description}</p>
 
       <div className="mt-8">
-        <Calculator />
+        <Tool />
       </div>
 
       <section className="mt-20 grid gap-10 lg:grid-cols-12">
         <div className="lg:col-span-6">
-          <h2 className="font-display text-2xl font-bold">How it is worked out</h2>
+          <h2 className="font-display text-2xl font-bold">
+            {tool.kind === "lookup" ? "Where the data comes from" : "How it is worked out"}
+          </h2>
           <p className="mt-4 rounded-2xl bg-paper-deep/70 p-5 text-lg font-medium leading-relaxed">
             {tool.formula}
           </p>
@@ -80,7 +82,7 @@ export default async function CalculatorPage({ params }: Params) {
       </section>
 
       <section className="mt-20">
-        <h2 className="font-display text-2xl font-bold">Next calculators</h2>
+        <h2 className="font-display text-2xl font-bold">More tools</h2>
         <div className="mt-5 grid gap-4 md:grid-cols-3">
           {more.map((t) => (
             <Link

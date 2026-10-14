@@ -14,7 +14,7 @@ export default function SiteHeader() {
           href="/#tools"
           className="rounded-full border-2 border-ink px-4 py-2 text-sm font-semibold transition-colors hover:bg-ink hover:text-white"
         >
-          All calculators
+          All tools
         </Link>
       </div>
       <div className="centerline" aria-hidden="true" />

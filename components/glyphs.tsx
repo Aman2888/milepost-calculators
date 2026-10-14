@@ -1,7 +1,7 @@
 import type { GlyphName, ShieldTone } from "@/lib/tools";
 
 /** Simple 24px line icons, drawn once and reused in shields and headings. */
-function GlyphPaths({ name }: { name: GlyphName }) {
+export function GlyphPaths({ name }: { name: GlyphName }) {
   switch (name) {
     case "pump":
       return (
@@ -74,6 +74,29 @@ function GlyphPaths({ name }: { name: GlyphName }) {
           <path d="M11 12l8-8M16 7l3 3M14 9l2 2" />
         </>
       );
+    case "scan":
+      return (
+        <>
+          <path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3" />
+          <path d="M8 9v6M11 9v6M13.5 9v6M16 9v6" />
+        </>
+      );
+    case "alert":
+      return (
+        <>
+          <path d="M12 4l9 16H3z" />
+          <path d="M12 10v4.5M12 17.4h.01" />
+        </>
+      );
+    case "star":
+      return <path d="M12 3.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L12 17l-5.2 2.7 1-5.9-4.3-4.1 5.9-.8z" />;
+    case "chat":
+      return (
+        <>
+          <path d="M5 5h14a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1h-8l-4 4v-4H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z" />
+          <path d="M12 8.5v3.5M12 14.2h.01" />
+        </>
+      );
   }
 }
 
@@ -94,7 +117,7 @@ export function Glyph({ name, className }: { name: GlyphName; className?: string
   );
 }
 
-const FILL: Record<ShieldTone, string> = {
+export const SHIELD_FILL: Record<ShieldTone, string> = {
   blue: "#175089",
   red: "#cc4437",
   yellow: "#f3b32a",
@@ -102,7 +125,7 @@ const FILL: Record<ShieldTone, string> = {
   ink: "#1e2b37",
 };
 
-const SHIELD =
+export const SHIELD_PATH =
   "M24 2.5c-5.2 3.2-12.6 4.4-20.5 3.3C3.2 28 6.5 42 24 51.5 41.5 42 44.8 28 44.5 5.8 36.6 6.9 29.2 5.7 24 2.5z";
 
 /** A route-shield badge, like the ones on highway signs. */
@@ -124,8 +147,8 @@ export function Shield({
       aria-hidden="true"
       className="shrink-0"
     >
-      <path d={SHIELD} fill="#1e2b37" stroke="#1e2b37" strokeWidth="5" strokeLinejoin="round" />
-      <path d={SHIELD} fill={FILL[tone]} stroke="#ffffff" strokeWidth="2" strokeLinejoin="round" />
+      <path d={SHIELD_PATH} fill="#1e2b37" stroke="#1e2b37" strokeWidth="5" strokeLinejoin="round" />
+      <path d={SHIELD_PATH} fill={SHIELD_FILL[tone]} stroke="#ffffff" strokeWidth="2" strokeLinejoin="round" />
       <g
         transform="translate(12 13.5)"
         fill="none"

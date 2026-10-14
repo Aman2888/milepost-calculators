@@ -195,6 +195,7 @@ export function Sign({
   rows = [],
   extra,
   empty = "Enter valid numbers to see your result.",
+  compact = false,
 }: {
   tone?: SignTone;
   label: string;
@@ -203,6 +204,8 @@ export function Sign({
   rows?: SignRow[];
   extra?: ReactNode;
   empty?: string;
+  /** smaller headline, for results that are words rather than a number */
+  compact?: boolean;
 }) {
   const t = SIGN[tone];
   return (
@@ -216,7 +219,11 @@ export function Sign({
           <p className="mt-3 font-display text-2xl font-semibold leading-snug">{empty}</p>
         ) : (
           <>
-            <p className="mt-1 break-words font-display text-5xl font-bold leading-none tracking-tight tabular-nums sm:text-6xl">
+            <p
+              className={`mt-1 break-words font-display font-bold tracking-tight tabular-nums ${
+                compact ? "text-3xl leading-tight sm:text-4xl" : "text-5xl leading-none sm:text-6xl"
+              }`}
+            >
               {value}
               {unit && <span className={`ml-2 text-xl font-semibold ${t.sub}`}>{unit}</span>}
             </p>

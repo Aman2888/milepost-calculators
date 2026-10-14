@@ -1,4 +1,10 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Page not found",
+  robots: { index: false, follow: true },
+};
 
 export default function NotFound() {
   return (
@@ -6,14 +12,14 @@ export default function NotFound() {
       <p className="font-display text-7xl font-extrabold">404</p>
       <h1 className="mt-4 font-display text-3xl font-bold">That road does not go anywhere</h1>
       <p className="mt-3 text-lg text-ink-soft">
-        The page you wanted is missing or the link has changed. Pick a calculator from the list
+        The page you wanted is missing or the link has changed. Pick a tool from the list
         and you are back on the route.
       </p>
       <Link
         href="/#tools"
         className="mt-8 inline-block rounded-full bg-ink px-6 py-3 font-semibold text-white transition-colors hover:bg-sign"
       >
-        See all calculators
+        See all tools
       </Link>
     </main>
   );

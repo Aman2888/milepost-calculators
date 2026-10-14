@@ -9,12 +9,16 @@ import WheelOffset from "./WheelOffset";
 import Horsepower from "./Horsepower";
 import CostPerMile from "./CostPerMile";
 import AutoLoan from "./AutoLoan";
+import VinDecoder from "../lookups/VinDecoder";
+import RecallChecker from "../lookups/RecallChecker";
+import SafetyRatings from "../lookups/SafetyRatings";
+import Complaints from "../lookups/Complaints";
 
 /**
- * Kept in a plain (server) module on purpose: each calculator is its own
- * client component, and the page picks one by slug.
+ * Kept in a plain (server) module on purpose: each calculator and lookup is
+ * its own client component, and the page picks one by slug.
  */
-export const calculators: Record<string, ComponentType> = {
+export const toolComponents: Record<string, ComponentType> = {
   "fuel-cost-calculator": FuelCost,
   "mpg-calculator": Mpg,
   "ev-charging-cost-calculator": EvCharging,
@@ -25,4 +29,8 @@ export const calculators: Record<string, ComponentType> = {
   "horsepower-converter": Horsepower,
   "cost-per-mile-calculator": CostPerMile,
   "auto-loan-calculator": AutoLoan,
+  "vin-decoder": VinDecoder,
+  "recall-checker": RecallChecker,
+  "vehicle-safety-ratings": SafetyRatings,
+  "common-problems-lookup": Complaints,
 };
