@@ -6,11 +6,11 @@ import JsonLd from "@/components/JsonLd";
 import RouteList from "@/components/RouteList";
 import { homeFaq } from "@/lib/content";
 import { faqLd, graph, itemListLd, organizationLd, pageMetadata, websiteLd } from "@/lib/seo";
-import { SITE_DESCRIPTION, SITE_NAME, SITE_TAGLINE } from "@/lib/site";
+import { SITE_DESCRIPTION } from "@/lib/site";
 import { tools } from "@/lib/tools";
 
 export const metadata: Metadata = pageMetadata({
-  title: `${SITE_NAME}: ${SITE_TAGLINE}`,
+  title: "Free Car Calculators: Fuel Cost, MPG, VIN Decoder",
   description: SITE_DESCRIPTION,
   path: "/",
   absoluteTitle: true,
@@ -23,13 +23,13 @@ export default function Home() {
       <section className="mx-auto grid max-w-6xl items-center gap-12 px-5 pb-16 pt-12 lg:grid-cols-12 lg:gap-8 lg:pt-20">
         <div className="lg:col-span-6">
           <h1 className="font-display text-5xl font-extrabold leading-[1.02] tracking-tight sm:text-6xl lg:text-7xl">
-            Know what the drive will cost before you turn the key.
+            Free car calculators for the cost of the drive.
           </h1>
           <p className="mt-6 max-w-lg text-lg leading-relaxed text-ink-soft">
-            Ten free calculators for fuel, charging, road trips, tires, wheels and car loans, plus
-            four vehicle lookups for VINs, recalls, safety ratings and owner complaints, using
-            official NHTSA data. No sign-up. The calculators run in your browser, and a lookup
-            sends only the VIN or vehicle you search for.
+            These free car calculators cover fuel cost, MPG, EV charging, road trips, tires, wheels
+            and car loans, plus a VIN decoder, car recall check, safety ratings and owner
+            complaints from official NHTSA data. No sign-up. Each car calculator runs in your
+            browser, and a lookup sends only the VIN or vehicle you search for.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
@@ -54,7 +54,7 @@ export default function Home() {
       <section id="tools" className="mx-auto max-w-6xl scroll-mt-6 px-5 pt-8">
         <div className="mb-8 max-w-xl">
           <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">
-            Pick a tool
+            Pick a car calculator
           </h2>
           <p className="mt-2 text-lg text-ink-soft">
             Each one tells you what to enter and what you will get back, and shows how the answer
@@ -65,7 +65,7 @@ export default function Home() {
       </section>
 
       <div className="mx-auto max-w-6xl px-5 pb-4">
-        <Faq items={homeFaq} title="Questions about Milepost" />
+        <Faq items={homeFaq} title="Questions about these car calculators" />
       </div>
     </main>
   );

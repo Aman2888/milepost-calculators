@@ -14,7 +14,7 @@ export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3
  * when you edit the content, not on every build: search engines trust a
  * lastmod that only moves when something really changed.
  */
-export const CONTENT_UPDATED = "2026-10-14";
+export const CONTENT_UPDATED = "2026-10-19";
 
 /** Optional. Shown on the About page and in structured data when set. */
 export const SITE_CONTACT_EMAIL = process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "";

@@ -255,9 +255,9 @@ export const tools: Tool[] = [
     get: "recalls and what the fix is",
     glyph: "alert",
     tone: "red",
-    title: "Recall Checker: Safety Recalls by Model",
+    title: "Car Recall Check: Safety Recalls by Model",
     description:
-      "Pick a year, make and model to see the safety recalls NHTSA has on file, what could go wrong and how the maker fixes it.",
+      "Run a car recall check: pick a year, make and model to see the safety recalls NHTSA has on file, what could go wrong and how the maker fixes it.",
     formula:
       "Recalls come from NHTSA’s recall database, which collects every safety recall campaign that car makers report in the United States. Results are listed newest first.",
     tips: [
@@ -297,9 +297,9 @@ export const tools: Tool[] = [
     get: "complaints grouped by problem area",
     glyph: "chat",
     tone: "yellow",
-    title: "Common Problems Lookup: Owner Complaints",
+    title: "Car Complaints by Model: Owner Problem Lookup",
     description:
-      "Pick a year, make and model to see which problem areas owners report most, with the latest complaints filed with NHTSA.",
+      "See car complaints by model: pick a year, make and model to see which problem areas owners report most, with the latest complaints filed with NHTSA.",
     formula:
       "Complaints come from NHTSA’s consumer complaint database. Owners file a report and NHTSA tags it with the parts involved. Problem areas are counted across every complaint for that model year.",
     tips: [

@@ -12,10 +12,10 @@ export default function Image() {
       <OgFrame>
         <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
           <div style={{ fontSize: 76, fontWeight: 800, lineHeight: 1.05, maxWidth: 980 }}>
-            Know what the drive will cost before you turn the key.
+            Free car calculators for the cost of the drive.
           </div>
           <div style={{ fontSize: 34, color: "#4a5966" }}>
-            Free car calculators plus VIN, recall, safety rating and complaint lookups
+            Fuel cost, MPG and a VIN decoder, plus recall and complaint lookups
           </div>
         </div>
       </OgFrame>
