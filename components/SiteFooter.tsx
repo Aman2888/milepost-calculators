@@ -1,4 +1,5 @@
 import Link from "next/link";
+import SiteLogo from "@/components/SiteLogo";
 import { tools } from "@/lib/tools";
 import { SITE_NAME } from "@/lib/site";
 
@@ -8,7 +9,10 @@ export default function SiteFooter() {
       <div className="centerline" aria-hidden="true" />
       <div className="mx-auto grid max-w-6xl gap-10 px-5 py-12 md:grid-cols-12">
         <div className="md:col-span-5">
-          <p className="font-display text-2xl font-extrabold">{SITE_NAME}</p>
+          <p className="flex items-center gap-2.5 font-display text-2xl font-extrabold">
+            <SiteLogo className="h-8 w-6" />
+            {SITE_NAME}
+          </p>
           <p className="mt-3 max-w-sm text-white/75">
             Free calculators and vehicle lookups for the numbers behind owning and driving a car.
             Calculators work out everything in your browser. Lookups send only the VIN or vehicle
@@ -20,7 +24,7 @@ export default function SiteFooter() {
           </p>
           <p className="mt-3 max-w-sm text-sm text-white/60">
             Vehicle data comes from the U.S. National Highway Traffic Safety Administration
-            (NHTSA). Milepost is not affiliated with or endorsed by NHTSA.
+            (NHTSA). {SITE_NAME} is not affiliated with or endorsed by NHTSA.
           </p>
           <ul className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm">
             <li>

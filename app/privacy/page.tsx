@@ -6,9 +6,9 @@ import { formatDate } from "@/lib/nhtsa";
 import { CONTENT_UPDATED, SITE_CONTACT_EMAIL, SITE_NAME } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Privacy",
+  title: "What the calculators collect",
   description:
-    "What Milepost does and does not collect: calculators run in your browser, and the vehicle lookups send only the VIN or vehicle you search for to NHTSA.",
+    `What ${SITE_NAME} does and does not collect: calculators run in your browser, and the vehicle lookups send only the VIN or vehicle you search for to NHTSA.`,
   path: "/privacy",
   shareImage: "/opengraph-image",
 });
@@ -49,7 +49,7 @@ export default function Privacy() {
 
       <h2 className="mt-10 font-display text-2xl font-bold">The vehicle lookups</h2>
       <p className="mt-3 leading-relaxed">
-        The VIN decoder, Recall Checker, Vehicle Safety Ratings and Common Problems Lookup need
+        The VIN decoder, Car Recall Check, Vehicle Safety Ratings and Car Complaints by Model need
         data from the U.S. National Highway Traffic Safety Administration (NHTSA). When you use
         one, your browser sends the VIN, or the year, make and model you picked, to {SITE_NAME}’s
         server. The server asks NHTSA for the answer and passes it back to you.

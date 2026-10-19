@@ -185,7 +185,7 @@ export default function SafetyRatings() {
       {done && done.items.length === 0 && (
         <Notice title="No ratings found">
           NHTSA has not published star ratings for this vehicle. Many trucks, vans, older models and
-          low-volume cars are never tested. The Recall Checker and Common Problems Lookup may still
+          low-volume cars are never tested. Car Recall Check and Car Complaints by Model may still
           have information.
         </Notice>
       )}

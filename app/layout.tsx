@@ -57,8 +57,8 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${display.variable} ${body.variable}`}>
-      <body className="min-h-screen antialiased">
+    <html lang="en" className={`${display.variable} ${body.variable}`} suppressHydrationWarning>
+      <body className="min-h-screen antialiased" suppressHydrationWarning>
         <a
           href="#main"
           className="sr-only rounded-lg bg-ink px-4 py-2 text-white focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50"

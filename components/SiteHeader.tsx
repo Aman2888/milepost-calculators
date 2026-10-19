@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MilepostMark } from "@/components/glyphs";
+import SiteLogo from "@/components/SiteLogo";
 import { SITE_NAME } from "@/lib/site";
 
 export default function SiteHeader() {
@@ -7,7 +7,7 @@ export default function SiteHeader() {
     <header>
       <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
         <Link href="/" className="flex items-center gap-2.5" aria-label={`${SITE_NAME} home`}>
-          <MilepostMark className="h-9 w-7" />
+          <SiteLogo className="h-9 w-7" />
           <span className="font-display text-2xl font-extrabold tracking-tight">{SITE_NAME}</span>
         </Link>
         <Link

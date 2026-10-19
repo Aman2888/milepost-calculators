@@ -1,5 +1,6 @@
 import { Children, Fragment, isValidElement, type ReactNode } from "react";
 import { GlyphPaths, SHIELD_FILL, SHIELD_PATH } from "@/components/glyphs";
+import { SITE_LOGO_URL, SITE_NAME } from "@/lib/site";
 import type { GlyphName, ShieldTone } from "@/lib/tools";
 
 /** The share-image renderer only accepts plain elements inside an <svg>, so fragments are opened up. */
@@ -54,12 +55,16 @@ export function OgFrame({ children, label }: { children: ReactNode; label?: stri
     >
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-          <svg width="40" height="54" viewBox="0 0 28 38">
-            <rect x="3" y="2" width="22" height="34" rx="5" fill="#f7f9ef" stroke="#1e2b37" strokeWidth="2.5" />
-            <path d="M3 13V7a5 5 0 0 1 5-5h12a5 5 0 0 1 5 5v6z" fill="#f3b32a" stroke="#1e2b37" strokeWidth="2.5" />
-            <path d="M9 22h10M9 28h6" stroke="#1e2b37" strokeWidth="2.5" strokeLinecap="round" />
-          </svg>
-          <div style={{ fontSize: 40, fontWeight: 800 }}>Milepost</div>
+          {SITE_LOGO_URL ? (
+            <img src={SITE_LOGO_URL} alt="" width={40} height={54} style={{ objectFit: "contain" }} />
+          ) : (
+            <svg width="40" height="54" viewBox="0 0 28 38">
+              <rect x="3" y="2" width="22" height="34" rx="5" fill="#f7f9ef" stroke="#1e2b37" strokeWidth="2.5" />
+              <path d="M3 13V7a5 5 0 0 1 5-5h12a5 5 0 0 1 5 5v6z" fill="#f3b32a" stroke="#1e2b37" strokeWidth="2.5" />
+              <path d="M9 22h10M9 28h6" stroke="#1e2b37" strokeWidth="2.5" strokeLinecap="round" />
+            </svg>
+          )}
+          <div style={{ fontSize: 40, fontWeight: 800 }}>{SITE_NAME}</div>
         </div>
         {label && <div style={{ fontSize: 28, color: "#4a5966" }}>{label}</div>}
       </div>

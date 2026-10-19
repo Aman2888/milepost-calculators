@@ -1,8 +1,11 @@
+import { SITE_NAME } from "@/lib/site";
+
 /**
  * The written content that sits around each tool: a short direct answer, a
  * worked example and a few frequently asked questions. It is shown on the
- * page, repeated in the structured data (FAQPage) and in /llms-full.txt, so
- * people, search engines and AI assistants all read the same facts.
+ * tool page and in /llms-full.txt, so people and AI assistants read the same
+ * facts. Tool pages do not emit FAQPage JSON-LD. Google retired FAQ rich
+ * results on 7 May 2026.
  *
  * Every number in a worked example was produced by the same formulas the
  * calculators use.
@@ -295,7 +298,7 @@ export const content: Record<string, ToolContent> = {
   "vin-decoder": {
     category: "ReferenceApplication",
     quick:
-      "A VIN (vehicle identification number) is a unique 17-character code that identifies a vehicle’s maker, model, year, engine and where it was built. Enter yours and Milepost decodes it using NHTSA’s official vPIC database.",
+      `A VIN (vehicle identification number) is a unique 17-character code that identifies a vehicle’s maker, model, year, engine and where it was built. Enter yours and ${SITE_NAME} decodes it using NHTSA’s official vPIC database.`,
     faq: [
       {
         q: "What is a VIN?",
@@ -374,7 +377,7 @@ export const content: Record<string, ToolContent> = {
     faq: [
       {
         q: "Where do these complaints come from?",
-        a: "Owners file them with NHTSA, and NHTSA tags each one with the parts involved. Milepost reads the public complaint data and counts the problem areas.",
+        a: `Owners file them with NHTSA, and NHTSA tags each one with the parts involved. ${SITE_NAME} reads the public complaint data and counts the problem areas.`,
       },
       {
         q: "Does a complaint mean the car is defective?",
@@ -382,7 +385,7 @@ export const content: Record<string, ToolContent> = {
       },
       {
         q: "How do I tell which problems are serious?",
-        a: "Look at the crash, fire and injury tags, and at which problem areas are reported most. Then check the Recall Checker to see whether the issue was already recalled.",
+        a: "Look at the crash, fire and injury tags, and at which problem areas are reported most. Then open Car Recall Check to see whether the issue was already recalled.",
       },
       {
         q: "How do I report a problem with my own car?",
@@ -398,7 +401,7 @@ export const getContent = (slug: string) => content[slug];
 /** Questions about the site itself, shown on the home page. */
 export const homeFaq: Faq[] = [
   {
-    q: "Are Milepost’s calculators and lookups free?",
+    q: `Are ${SITE_NAME}’s calculators and lookups free?`,
     a: "Yes. Every tool is free to use, with no sign-up and no account.",
   },
   {
@@ -406,19 +409,19 @@ export const homeFaq: Faq[] = [
     a: "The VIN decoder, recall, safety rating and complaint lookups use free public APIs from the U.S. National Highway Traffic Safety Administration (NHTSA). The calculators use standard published formulas.",
   },
   {
-    q: "Does Milepost store my VIN or the numbers I enter?",
-    a: "The calculators run in your browser and send nothing anywhere. A lookup sends only the VIN or the year, make and model you search for, and Milepost does not save it.",
+    q: `Does ${SITE_NAME} store my VIN or the numbers I enter?`,
+    a: `The calculators run in your browser and send nothing anywhere. A lookup sends only the VIN or the year, make and model you search for, and ${SITE_NAME} does not save it.`,
   },
   {
     q: "Can I check whether my exact car has an open recall?",
-    a: "The Recall Checker lists the recalls issued for a year, make and model. To see whether one specific car still needs a repair, enter its VIN at nhtsa.gov/recalls.",
+    a: "Car Recall Check lists the recalls issued for a year, make and model. To see whether one specific car still needs a repair, enter its VIN at nhtsa.gov/recalls.",
   },
   {
     q: "How accurate are the calculators?",
     a: "They apply standard formulas, so the maths is exact, but results are estimates. Real fuel prices, MPG, interest rates and resale values vary, so treat the answers as a guide, not a quote.",
   },
   {
-    q: "Is Milepost affiliated with NHTSA?",
-    a: "No. Milepost is an independent site that uses NHTSA’s public data and is not affiliated with or endorsed by NHTSA.",
+    q: `Is ${SITE_NAME} affiliated with NHTSA?`,
+    a: `No. ${SITE_NAME} is an independent site that uses NHTSA’s public data and is not affiliated with or endorsed by NHTSA.`,
   },
 ];

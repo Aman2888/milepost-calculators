@@ -249,7 +249,7 @@ export const tools: Tool[] = [
   {
     slug: "recall-checker",
     kind: "lookup",
-    name: "Recall Checker",
+    name: "Car Recall Check",
     short: "See the safety recalls issued for any year, make and model.",
     enter: "year, make, model",
     get: "recalls and what the fix is",
@@ -291,7 +291,7 @@ export const tools: Tool[] = [
   {
     slug: "common-problems-lookup",
     kind: "lookup",
-    name: "Common Problems Lookup",
+    name: "Car Complaints by Model",
     short: "See what owners complain about most on a given year, make and model.",
     enter: "year, make, model",
     get: "complaints grouped by problem area",
@@ -306,7 +306,7 @@ export const tools: Tool[] = [
       "Complaints are owner reports, not confirmed defects. NHTSA does not check each one.",
       "Popular cars collect more complaints simply because more of them are on the road. Look at which areas stand out, not only the total.",
       "Check the same problem across a few model years. A trouble spot that disappears in a later year is often a sign it was fixed.",
-      "Pair this with the Recall Checker. A common complaint that has a recall is usually one you can get repaired for free.",
+      "Pair this with Car Recall Check. A common complaint that has a recall is usually one you can get repaired for free.",
     ],
   },
 ];

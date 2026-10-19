@@ -1,5 +1,12 @@
-/** Change the name here and it updates everywhere. */
-export const SITE_NAME = "Milepost";
+/** Change NEXT_PUBLIC_SITE_NAME and the name updates everywhere. */
+export const SITE_NAME = process.env.NEXT_PUBLIC_SITE_NAME?.trim() || "Milepost";
+
+/**
+ * Optional logo. A path in `public` (`/brand.png`) or a full https URL.
+ * Leave it unset to keep the built-in milepost mark.
+ */
+const logoSetting = process.env.NEXT_PUBLIC_LOGO_URL?.trim() ?? "";
+export const SITE_LOGO = logoSetting;
 export const SITE_TAGLINE = "Free car calculators and vehicle lookups";
 // kept under about 155 characters so search results show it in full
 export const SITE_DESCRIPTION =
@@ -7,6 +14,18 @@ export const SITE_DESCRIPTION =
 
 /** Set NEXT_PUBLIC_SITE_URL (for example https://yoursite.com) before you deploy. */
 export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(/\/+$/, "");
+
+export const SITE_LOGO_URL = logoSetting
+  ? /^https?:\/\//i.test(logoSetting)
+    ? logoSetting
+    : `${SITE_URL}${logoSetting.startsWith("/") ? "" : "/"}${logoSetting}`
+  : "";
+
+if (process.env.NODE_ENV === "production" && /localhost|127\.0\.0\.1/.test(SITE_URL)) {
+  throw new Error(
+    "Set NEXT_PUBLIC_SITE_URL to the public https origin before building. Canonicals, the sitemap, and llms.txt must not use localhost.",
+  );
+}
 
 /**
  * The date the written content (formulas, tips, FAQs) was last reviewed. It is

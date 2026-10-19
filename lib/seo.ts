@@ -6,6 +6,7 @@ import {
   NHTSA_URL,
   SITE_CONTACT_EMAIL,
   SITE_DESCRIPTION,
+  SITE_LOGO_URL,
   SITE_NAME,
   SITE_SOCIALS,
   SITE_URL,
@@ -67,7 +68,7 @@ export const organizationLd = () => ({
   "@id": ORG_ID,
   name: SITE_NAME,
   url: `${SITE_URL}/`,
-  logo: { "@type": "ImageObject", url: `${SITE_URL}/logo.png`, width: 512, height: 512 },
+  logo: { "@type": "ImageObject", url: SITE_LOGO_URL || `${SITE_URL}/icon.svg` },
   description: SITE_DESCRIPTION,
   ...(SITE_SOCIALS.length ? { sameAs: SITE_SOCIALS } : {}),
   ...(SITE_CONTACT_EMAIL

@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { SITE_DESCRIPTION, SITE_NAME } from "@/lib/site";
+import { SITE_DESCRIPTION, SITE_LOGO, SITE_NAME } from "@/lib/site";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
@@ -10,9 +10,8 @@ export default function manifest(): MetadataRoute.Manifest {
     display: "standalone",
     background_color: "#e7edda",
     theme_color: "#e7edda",
-    icons: [
-      { src: "/icon.svg", sizes: "any", type: "image/svg+xml" },
-      { src: "/logo.png", sizes: "512x512", type: "image/png" },
-    ],
+    icons: SITE_LOGO
+      ? [{ src: SITE_LOGO, sizes: "512x512", type: "image/png" }]
+      : [{ src: "/icon.svg", sizes: "any", type: "image/svg+xml" }],
   };
 }

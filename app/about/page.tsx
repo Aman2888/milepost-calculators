@@ -7,9 +7,9 @@ import { formatDate } from "@/lib/nhtsa";
 import { tools } from "@/lib/tools";
 
 export const metadata: Metadata = pageMetadata({
-  title: `About ${SITE_NAME}`,
+  title: "About these car calculators",
   description:
-    "Who Milepost is for, where its calculator formulas and NHTSA vehicle data come from, how accurate the results are, and how to report a mistake.",
+    `Who ${SITE_NAME} is for, where its calculator formulas and NHTSA vehicle data come from, how accurate the results are, and how to report a mistake.`,
   path: "/about",
   shareImage: "/opengraph-image",
 });

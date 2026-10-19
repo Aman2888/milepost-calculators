@@ -26,15 +26,15 @@ npm start
 | Cost Per Mile Calculator | `/cost-per-mile-calculator` |
 | Auto Loan Calculator | `/auto-loan-calculator` |
 | VIN Decoder | `/vin-decoder` |
-| Recall Checker | `/recall-checker` |
+| Car Recall Check | `/recall-checker` |
 | Vehicle Safety Ratings | `/vehicle-safety-ratings` |
-| Common Problems Lookup | `/common-problems-lookup` |
+| Car Complaints by Model | `/common-problems-lookup` |
 
 ## Where things live
 
 - `lib/calc.ts`: all the maths, as plain functions with no React
 - `lib/tools.ts`: names, descriptions, formulas and tips for every calculator (also drives the SEO titles)
-- `lib/site.ts`: site name and URL. Rename the site here
+- `lib/site.ts`: site name, logo and URL, read from environment variables
 - `components/calculators/`: one client component per calculator. `registry.ts` maps every slug (calculators and lookups) to its component
 - `components/lookups/`: the four NHTSA lookup tools, the year/make/model picker and shared pieces
 - `app/api/nhtsa/route.ts`: the server route the lookups call (see below)
@@ -51,9 +51,9 @@ The four lookups use NHTSA's free public APIs (no API key needed):
 | Tool | NHTSA API |
 |---|---|
 | VIN Decoder | vPIC `DecodeVinValues` |
-| Recall Checker | `recalls/recallsByVehicle` |
+| Car Recall Check | `recalls/recallsByVehicle` |
 | Vehicle Safety Ratings | `SafetyRatings` (5-Star program) |
-| Common Problems Lookup | `complaints/complaintsByVehicle` |
+| Car Complaints by Model | `complaints/complaintsByVehicle` |
 
 The browser never talks to NHTSA directly. It calls `/api/nhtsa`, a small server route that:
 
@@ -71,7 +71,7 @@ Things worth knowing about the data:
 - The recall list is per model year. NHTSA's public API cannot say whether one specific car has had the repair. The page says so and links to NHTSA's own VIN recall search.
 - Complaints are unverified owner reports, and safety ratings only exist for models NHTSA has tested.
 - The recall and complaint APIs return slash dates in different orders. The route works the order out from the data (a day above 12 gives it away) before turning them into ISO dates.
-- Milepost is not affiliated with NHTSA. The footer says so.
+- The site is not affiliated with NHTSA. The footer says so, using whatever name `NEXT_PUBLIC_SITE_NAME` is set to.
 
 ## SEO, AEO, GEO and LLMO
 
@@ -81,7 +81,7 @@ The site is set up for search engines, answer boxes and AI assistants. See **`SE
 - `lib/content.ts` holds the "In short" answer, worked example and FAQs for each tool. The same text is shown on the page, sent as FAQ structured data and written into `/llms-full.txt`. **When you add a tool, add its entry here too** (the page returns 404 without it).
 - `lib/seo.ts` builds the page metadata and the JSON-LD. `components/JsonLd.tsx`, `Faq.tsx` and `QuickAnswer.tsx` render them.
 - Share images are generated: `app/opengraph-image.tsx` (home) and `app/[slug]/opengraph-image.tsx` (every tool).
-- Environment variables (set before you build): `NEXT_PUBLIC_SITE_URL` (required), `NEXT_PUBLIC_CONTACT_EMAIL`, `NEXT_PUBLIC_SOCIAL_URLS`, `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION`, `NEXT_PUBLIC_BING_SITE_VERIFICATION`, `ALLOW_AI_CRAWLERS`. See `lib/site.ts`.
+- Environment variables (set before you build): `NEXT_PUBLIC_SITE_URL` (required), `NEXT_PUBLIC_SITE_NAME` (default Milepost), `NEXT_PUBLIC_LOGO_URL` (optional path such as `/brand.png`, or a full image URL), `NEXT_PUBLIC_CONTACT_EMAIL`, `NEXT_PUBLIC_SOCIAL_URLS`, `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION`, `NEXT_PUBLIC_BING_SITE_VERIFICATION`, `ALLOW_AI_CRAWLERS`. See `lib/site.ts`.
 - `CONTENT_UPDATED` in `lib/site.ts` is the "last reviewed" date. Change it when you edit written content.
 - The Privacy page says the site sets no cookies and runs no analytics. If you add analytics, update `app/privacy/page.tsx`.
 

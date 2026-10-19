@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import Faq from "@/components/Faq";
 import { Shield } from "@/components/glyphs";
+import JsonLd from "@/components/JsonLd";
+import QuickAnswer from "@/components/QuickAnswer";
 import { toolComponents } from "@/components/calculators/registry";
+import { content } from "@/lib/content";
+import { breadcrumbLd, graph, webAppLd } from "@/lib/seo";
 import { getTool, tools } from "@/lib/tools";
 
 type Params = { params: Promise<{ slug: string }> };
@@ -28,14 +33,22 @@ export default async function ToolPage({ params }: Params) {
   const { slug } = await params;
   const tool = getTool(slug);
   const Tool = toolComponents[slug];
-  if (!tool || !Tool) notFound();
+  const copy = content[slug];
+  if (!tool || !Tool || !copy) notFound();
 
-  // the three tools that follow this one in the list
-  const index = tools.findIndex((t) => t.slug === slug);
-  const more = [1, 2, 3].map((n) => tools[(index + n) % tools.length]);
+  const more = copy.related.map((related) => getTool(related)).filter((item) => item !== undefined);
 
   return (
     <main className="mx-auto max-w-6xl px-5 pb-8">
+      <JsonLd
+        data={graph(
+          webAppLd(tool, copy),
+          breadcrumbLd([
+            { name: "Home", path: "/" },
+            { name: tool.name, path: `/${tool.slug}` },
+          ]),
+        )}
+      />
       <nav aria-label="Breadcrumb" className="pt-6 text-sm text-ink-soft">
         <Link href="/" className="underline-offset-4 hover:underline">
           Home
@@ -51,6 +64,13 @@ export default async function ToolPage({ params }: Params) {
         </h1>
       </div>
       <p className="mt-4 max-w-2xl text-lg leading-relaxed text-ink-soft">{tool.description}</p>
+      <QuickAnswer>{copy.quick}</QuickAnswer>
+      {copy.worked ? (
+        <p className="mt-4 max-w-3xl text-lg leading-relaxed">
+          <span className="font-display font-bold">Worked example: </span>
+          {copy.worked}
+        </p>
+      ) : null}
 
       <div className="mt-8">
         <Tool />
@@ -80,6 +100,8 @@ export default async function ToolPage({ params }: Params) {
           </ul>
         </div>
       </section>
+
+      <Faq items={copy.faq} title={`Questions about ${tool.name}`} />
 
       <section className="mt-20">
         <h2 className="font-display text-2xl font-bold">More tools</h2>
